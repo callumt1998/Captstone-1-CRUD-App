@@ -36,8 +36,8 @@ router.post(`/`, (req, res) => {
       .json({ msg: `Please include name,email,gender and status ` });
   }
   members.push(newMember);
-  res.json(members);
-  //res.redirect(`/`);
+  //res.json(members);
+  res.redirect(`/`);
 });
 //update member
 router.put(`/:id`, (req, res) => {

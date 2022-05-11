@@ -1,27 +1,43 @@
-<h1>{{{title}}}</h1>
-<form action="/api/members" method="POST" class="member_form">
-<div class="form-group">
+<h1 class="text-center mb-3">{{{title}}}</h1>
+<form action="/api/members" method="POST" class="mb-4">
+  <div class="form-group">
     <label for="name">Name</label>
-    <input type="text" name="name" class="form-control">
-</div>
-<div class="form-group">
+    <input type="text" name="name" class="form-control" />
+  </div>
+  <div class="list-group">
     <label for="email">Email</label>
-    <input type="email" name="email" class="form-control">
-</div>
-<div class="form-group">
+    <input type="email" name="email" class="form-control" />
+  </div>
+  <div class="list-group">
     <label for="gender">Gender</label>
-    <input type="text" name="gender" class="form-control">
-</div>
-<div class="form-group">
+    <input type="text" name="gender" class="form-control" />
+  </div>
+  <div class="list-group">
     <label for="status">Status</label>
-    <input type="text" name="status" class="form-control">
-</div>
-<input type="submit" value="Add Member" class="btn primary"
+    <input type="text" name="status" class="form-control" />
+  </div>
+  <input type="submit" value="Add Member" class="btn btn-primary btn-block" />
 </form>
 <h4>Members</h4>
-<ul class="member_list">
-  {{#each members}}
-    <li>{{this.name}}: {{this.email}}: {{this.gender}}: {{this.status}}</li>
-  {{/each}}
-</ul>
-<a href="/api/members" class="btn primary">Visit API</a>
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each members}}
+    <tr>
+      <th scope="row">{{this.name}}</th>
+      <td>{{this.email}} </td>
+      <td>{{this.gender}}</td>
+      <td>{{this.status}}</td>
+       {{/each}}
+    </tr>
+  
+  </tbody>
+</table>
+<a href="/api/members" class="btn btn-light mt-4">Visit API</a>
