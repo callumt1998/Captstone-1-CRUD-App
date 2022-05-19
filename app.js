@@ -3,6 +3,8 @@ const path = require(`path`);
 const exphbs = require(`express-handlebars`);
 const logger = require(`./middleware/logger`);
 const members = require(`./Members`);
+
+//initalise application
 const app = express();
 
 //initialise middleware
@@ -23,6 +25,19 @@ app.get(`/`, (req, res) =>
     members: members,
   })
 );
+//Search Data- TEST
+// app.use(`/`, (req, res, next) => {
+//   res.send(`Node.js Search and filter`);
+// });
+
+//search data- assign route - TEST
+// app.use(`/`,(req,res,next)=>{
+//   const filters= req.query;
+//   const filteredUsers = members.filter(members.some(member)=>{let isValid= true;
+//   for (key in filters){
+//     console.log(key, members[member],
+//   }});
+// });
 
 //Creating a Static Folder not needed
 

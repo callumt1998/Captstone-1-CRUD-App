@@ -15,6 +15,16 @@ router.get(`/:id`, (req, res) => {
     res.status(400).json({ msg: `No person with the id of ${req.params.id}` });
   }
 });
+// filters male or female - Test
+router.get(`/`, (req, res) => {
+  const membersFilterGender = members.some(
+    (member) => member.gender == req.params.gender
+  );
+  if (membersFilterGender) {
+    res.json(members.filter((member) => member.gender == req.params.gender));
+    members.filter(membersFilterGender);
+  }
+});
 
 // create member
 router.post(`/`, (req, res) => {
@@ -73,5 +83,16 @@ router.delete(`/:id`, (req, res) => {
     res.status(400).json({ msg: `No person with the id of ${req.params.id}` });
   }
 });
+
+//search member -Test
+
+// router.search(`/:id`, (req, res) => {
+//   const found = members.some((member) => member.id === parseInt(req.params.id));
+//   if (found) {
+//     res.json(members.filter((member) => member.id === parseInt(req.params.id)));
+//   } else {
+//     res.status(401).json({ msg: `No person in the database` });
+//   }
+// });
 
 module.exports = router;

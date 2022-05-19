@@ -2,42 +2,72 @@
 <form action="/api/members" method="POST" class="mb-4">
   <div class="form-group">
     <label for="name">Name</label>
-    <input type="text" name="name" class="form-control" />
+    <input type="text" name="name" class="form-control" required="required" />
   </div>
   <div class="list-group">
     <label for="email">Email</label>
-    <input type="email" name="email" class="form-control" />
+    <input type="email" name="email" class="form-control" required="required" />
   </div>
   <div class="list-group">
     <label for="gender">Gender</label>
-    <input type="text" name="gender" class="form-control" />
+    <input type="text" name="gender" class="form-control" required="required" />
   </div>
   <div class="list-group">
     <label for="status">Status</label>
-    <input type="text" name="status" class="form-control" />
+    <input type="text" name="status" class="form-control" required="required" />
   </div>
+
   <input type="submit" value="Add Member" class="btn btn-primary btn-block" />
+
 </form>
+
 <h4>Members</h4>
+
+<!-- Searchbar helper-->
+
+<form class="d-flex">
+  <input
+    class="form-control me-2"
+    type="text"
+    id="myInput"
+    placeholder="Search"
+  />
+</form>
+
+<!-- Searchbar helper-->
 <table class="table table-striped">
+
   <thead class="thead-dark">
+
     <tr>
       <th scope="col">Name</th>
       <th scope="col">Email</th>
       <th scope="col">Gender</th>
       <th scope="col">Status</th>
     </tr>
+
   </thead>
-  <tbody>
+
+  <tbody id="myTable">
+
     {{#each members}}
-    <tr>
-      <th scope="row">{{this.name}}</th>
-      <td>{{this.email}} </td>
-      <td>{{this.gender}}</td>
-      <td>{{this.status}}</td>
-       {{/each}}
-    </tr>
-  
+      <tr>
+        <td>{{this.name}}</td>
+        <td>{{this.email}} </td>
+        <td>{{this.gender}}</td>
+        <td>{{this.status}}</td>
+      </tr>
+    {{/each}}
+
   </tbody>
 </table>
+<script>
+  $(document).ready(function () { $("#myInput").on("keyup", function () { var
+  value = $(this).val().toLowerCase(); $("#myTable tr").filter(function () {
+  $(this).toggle($(this).text().toLowerCase().search(value) > -1); }); }); });
+  /*if you swap match and search they show male and female by excluding and
+  //including // different results //toggle($(this).*/
+
+</script>
+
 <a href="/api/members" class="btn btn-light mt-4">Visit API</a>
