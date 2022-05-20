@@ -41,12 +41,14 @@ app.get(`/`, (req, res) =>
 
 //Creating a Static Folder not needed
 
-//app.use(express.static(path.join(__dirname, `public`)));
+// app.use(express.static(path.join(__dirname, `public`)));
 
 // app.get(`/`, (req, res) => {
 //   res.sendFile(path.join(__dirname, `Public`, `index.html`));
+//   res.render(`index`, {
+//     members: members,
+//   });
 // });
-
 //members api routes
 app.use(`/api/members`, require(`./routes/api/members`));
 
